@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Tiếng Anh 9 - Ms Lê Hằng English</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floatPattern {
+            from { background-position: 0 0; }
+            to { background-position: 120px 240px; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        body {
+            font-family: 'Quicksand', 'Nunito', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #8854C0, #FDCB6E, #00C9A7, #FF7675);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            padding: 24px 12px;
+            position: relative;
+            color: #2D3748;
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 100 100'%3E%3Cg fill='%23ffffff' fill-opacity='0.18'%3E%3Cpath d='M11 18l3 6 6 3-6 3-3 6-3-6-6-3 6-3z'/%3E%3Cpath d='M70 60l2 4 4 2-4 2-2 4-2-4-4-2 4-2z'/%3E%3Ccircle cx='40' cy='70' r='5'/%3E%3Ccircle cx='80' cy='20' r='6'/%3E%3Cpath d='M45 20c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5z'/%3E%3C/g%3E%3C/svg%3E");
+            animation: floatPattern 25s linear infinite;
+        }
+
+        .container {
+            max-width: 840px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .teacher-badge {
+            display: inline-block;
+            background: #ffffff;
+            color: #8854C0;
+            font-size: 0.95rem;
+            font-weight: 800;
+            padding: 6px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .main-title {
+            font-size: 1.65rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+            margin-bottom: 6px;
+        }
+
+        .warning-box {
+            background: #FFF3BF;
+            border: 3px dashed #FAB005;
+            border-radius: 20px;
+            padding: 18px 22px;
+            text-align: center;
+            margin-bottom: 28px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+        }
+
+        .warning-title {
+            color: #D9480F;
+            font-weight: 900;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .warning-text {
+            color: #495057;
+            font-size: 0.98rem;
+            font-weight: 700;
+            line-height: 1.55;
+        }
+
+        .warning-highlight {
+            color: #E67E22;
+            font-weight: 900;
+            margin-top: 8px;
+            display: block;
+            font-size: 1.05rem;
+        }
+
+        .question-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 24px 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            transition: transform 0.2s ease;
+        }
+
+        .question-card.shake {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .question-number {
+            background: #8854C0;
+            color: white;
+            font-weight: 900;
+            font-size: 1rem;
+            padding: 6px 14px;
+            border-radius: 14px;
+            margin-right: 12px;
+            box-shadow: 0 3px 0 #5f3396;
+            flex-shrink: 0;
+        }
+
+        .question-instruction {
+            font-weight: 800;
+            color: #4A5568;
+            font-size: 0.95rem;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #2D3748;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background-color: #F7FAFC;
+            border: 2px solid #E2E8F0;
+            border-radius: 18px;
+            padding: 14px 20px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #2D3748;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #CBD5E0;
+            transition: all 0.15s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            line-height: 1.4;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 8px 0 #CBD5E0;
+            background-color: #EDF2F7;
+        }
+
+        .option-btn:active:not(:disabled) {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #CBD5E0;
+        }
+
+        .option-btn.correct {
+            background-color: #00D26A !important;
+            color: white !important;
+            border-color: #00B85C !important;
+            box-shadow: 0 5px 0 #00994D !important;
+        }
+
+        .option-btn.wrong {
+            background-color: #FF4757 !important;
+            color: white !important;
+            border-color: #E03947 !important;
+            box-shadow: 0 5px 0 #C0392B !important;
+        }
+
+        .option-btn:disabled {
+            cursor: default;
+            opacity: 0.95;
+        }
+
+        .explanation-box {
+            display: none;
+            margin-top: 20px;
+            background: #EBF8FF;
+            border: 2px solid #63B3ED;
+            border-radius: 18px;
+            padding: 20px;
+            font-size: 0.96rem;
+            line-height: 1.6;
+        }
+
+        .explanation-title {
+            font-weight: 900;
+            color: #2B6CB0;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .exp-section {
+            margin-bottom: 12px;
+        }
+
+        .exp-section-title {
+            font-weight: 800;
+            color: #2D3748;
+            margin-bottom: 5px;
+        }
+
+        .vocab-list {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin: 6px 0;
+            border: 1px solid #CBD5E0;
+        }
+
+        .vocab-item {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #4A5568;
+        }
+
+        .vocab-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .submit-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .submit-btn {
+            background: #00C9A7;
+            color: white;
+            font-size: 1.45rem;
+            font-weight: 900;
+            padding: 18px 54px;
+            border: none;
+            border-radius: 28px;
+            box-shadow: 0 8px 0 #00967D;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 #00967D;
+            background: #00E6BE;
+        }
+
+        .submit-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 4px 0 #00967D;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.65);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 28px;
+            padding: 35px 28px;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            position: relative;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-score {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #8854C0;
+            margin: 15px 0;
+        }
+
+        .modal-feedback {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #2D3748;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            background: #F7FAFC;
+            padding: 18px;
+            border-radius: 18px;
+            border: 2px solid #E2E8F0;
+        }
+
+        .modal-close-btn {
+            background: #8854C0;
+            color: white;
+            font-weight: 900;
+            font-size: 1.15rem;
+            padding: 14px 36px;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 5px 0 #5f3396;
+            cursor: pointer;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-pattern"></div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="teacher-badge">Giáo viên tạo: Ms Lê Hằng English</div>
+            <h1 class="main-title">EXERCISE 8B: CHOOSE THE BEST WRITTEN SENTENCE</h1>
+        </header>
+
+        <!-- Warning Box -->
+        <div class="warning-box">
+            <div class="warning-title">⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️</div>
+            <div class="warning-text">
+                Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.<br>
+                Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!
+                <span class="warning-highlight">* Kéo tới đâu, làm tới đó! *</span>
+            </div>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container"></div>
+
+        <!-- Submit Button -->
+        <div class="submit-section">
+            <button class="submit-btn" onclick="submitQuiz()">🎉 NỘP BÀI THI 🎉</button>
+        </div>
+    </div>
+
+    <!-- Modal Score Popup -->
+    <div class="modal-overlay" id="scoreModal">
+        <div class="modal-content">
+            <h2 style="font-size:1.8rem; font-weight:900; color:#2D3748;">KẾT QUẢ BÀI THI</h2>
+            <div class="modal-score" id="scoreDisplay">0 / 2</div>
+            <div class="modal-feedback" id="feedbackDisplay"></div>
+            <button class="modal-close-btn" onclick="closeModal()">Xem lại bài làm</button>
+        </div>
+    </div>
+
+    <script>
+        const rawQuizData = [
+  {
+    "id": 1,
+    "instruction": "Exercise 8b. Choose the sentence that is best written from the words/ phrases given.",
+    "text": "1. An / suggest I take / bus / Aeon mall / instead / go / there / motorbike.",
+    "options": [
+      "An suggested to take a bus to Aeon mall instead of going there by motorbike.",
+      "An suggested to take a bus to Aeon mall instead of to go there by motorbike.",
+      "An suggested taking a bus to Aeon mall instead of to go there by motorbike.",
+      "An suggested taking a bus to Aeon mall instead of going there by motorbike."
+    ],
+    "correctIndex": 3,
+    "translation": "Dịch câu gốc: An đã gợi ý đi xe buýt đến trung tâm thương mại Aeon thay vì đi đến đó bằng xe máy.",
+    "vocab": [
+      "A. An suggested to take... (Sai cấu trúc: suggest không đi với to-V khi không có tân ngữ)",
+      "B. An suggested to take... instead of to go... (Sai cả suggest to-V và instead of to-V)",
+      "C. An suggested taking... instead of to go... (Sai cấu trúc sau giới từ 'instead of')",
+      "D. An suggested taking a bus to Aeon mall instead of going there by motorbike. (Chính xác)"
+    ],
+    "whyCorrect": "Áp dụng cấu trúc: 'suggest + V-ing' (gợi ý làm gì) và 'instead of + V-ing' (thay vì làm gì). Cách thức di chuyển bằng phương tiện dùng 'by + motorbike'.",
+    "whyOthersWrong": "Đáp án A dùng 'suggest to take' sai cấu trúc. Đáp án B và C dùng 'instead of to go' sai ngữ pháp (sau giới từ 'of' phải dùng V-ing 'going')."
+  },
+  {
+    "id": 2,
+    "instruction": "Exercise 8b. Choose the sentence that is best written from the words/ phrases given.",
+    "text": "2. We all / wish / people / live / in peace / have / happy life /.",
+    "options": [
+      "We all wish the people can live in peace and have a happy life.",
+      "We all wish people are living in peace and having a happy life.",
+      "We all wish people could live in peace and have a happy life.",
+      "We all wish people lived in peace and have happy life."
+    ],
+    "correctIndex": 2,
+    "translation": "Dịch câu gốc: Tất cả chúng tôi đều ước mọi người có thể sống trong hòa bình và có một cuộc sống hạnh phúc.",
+    "vocab": [
+      "A. ...can live... (Sai: chưa lùi thì động từ khuyết thiếu 'can' thành 'could')",
+      "B. ...are living... (Sai: giữ thì hiện tại tiếp diễn, không tuân thủ quy tắc lùi thì)",
+      "C. We all wish people could live in peace and have a happy life. (Chính xác 100%)",
+      "D. ...lived in peace and have happy life. (Sai mâu thuẫn thì và thiếu mạo từ 'a')"
+    ],
+    "whyCorrect": "Cấu trúc câu ước ở hiện tại/tương lai chỉ khả năng: S + wish + S + could + V0. Hai động từ song song nối bằng 'and' giữ nguyên thể (could live ... and have ...). Cụm danh từ 'a happy life' có mạo từ 'a' chuẩn xác.",
+    "whyOthersWrong": "A và B chưa lùi thì ('can', 'are living'). D mâu thuẫn giữa 'lived' và 'have', đồng thời thiếu mạo từ 'a' trước 'happy life'."
+  }
+];
+
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new AudioContext();
+            }
+        }
+
+        function playDingSound() {
+            initAudio();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const now = audioCtx.currentTime;
+            const osc1 = audioCtx.createOscillator();
+            const osc2 = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc1.type = 'sine';
+            osc2.type = 'triangle';
+
+            osc1.frequency.setValueAtTime(523.25, now);
+            osc1.frequency.exponentialRampToValueAtTime(1046.50, now + 0.15);
+
+            osc2.frequency.setValueAtTime(659.25, now);
+            osc2.frequency.exponentialRampToValueAtTime(1318.51, now + 0.15);
+
+            gain.gain.setValueAtTime(0.3, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+
+            osc1.connect(gain);
+            osc2.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc1.start(now);
+            osc2.start(now);
+            osc1.stop(now + 0.4);
+            osc2.stop(now + 0.4);
+        }
+
+        function playWrongSound() {
+            initAudio();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(180, now);
+            osc.frequency.linearRampToValueAtTime(110, now + 0.3);
+
+            gain.gain.setValueAtTime(0.3, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(now);
+            osc.stop(now + 0.35);
+        }
+
+        function launchConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const pieces = [];
+            const numberOfPieces = 80;
+            const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#00D26A', '#2196f3', '#03a9f4', '#ffeb3b', '#ff9800'];
+
+            for (let i = 0; i < numberOfPieces; i++) {
+                pieces.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    rotation: Math.random() * 360,
+                    size: Math.random() * 10 + 6,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speed: Math.random() * 3 + 2,
+                    oscSpeed: Math.random() * 0.05 + 0.02,
+                    oscStep: Math.random() * Math.PI
+                });
+            }
+
+            let frames = 0;
+            function update() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                pieces.forEach(p => {
+                    p.y += p.speed;
+                    p.oscStep += p.oscSpeed;
+                    p.x += Math.sin(p.oscStep) * 2;
+                    p.rotation += 2;
+
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.rotation * Math.PI) / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                    ctx.restore();
+                });
+
+                frames++;
+                if (frames < 110) {
+                    requestAnimationFrame(update);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            }
+            update();
+        }
+
+        function shuffleArray(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        const userAnswers = {};
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            rawQuizData.forEach((q, index) => {
+                const optionsObj = q.options.map((opt, origIdx) => ({
+                    text: opt,
+                    originalIndex: origIdx
+                }));
+                const shuffledOptions = shuffleArray(optionsObj);
+
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.id = `q-card-${q.id}`;
+
+                let optionsHTML = '';
+                shuffledOptions.forEach((optObj, btnIdx) => {
+                    const letter = String.fromCharCode(65 + btnIdx);
+                    optionsHTML += `
+                        <button class="option-btn" 
+                                id="btn-${q.id}-${optObj.originalIndex}" 
+                                onclick="handleSelect(${q.id}, ${optObj.originalIndex}, ${q.correctIndex})">
+                            <strong style="margin-right:8px; min-width:24px;">${letter}.</strong> ${optObj.text}
+                        </button>
+                    `;
+                });
+
+                let vocabItemsHTML = q.vocab.map(v => `<div class="vocab-item">• ${v}</div>`).join('');
+
+                card.innerHTML = `
+                    <div class="question-header">
+                        <span class="question-number">Câu ${index + 1}</span>
+                        <span class="question-instruction">${q.instruction}</span>
+                    </div>
+                    <div class="question-text">${q.text}</div>
+                    <div class="options-grid">
+                        ${optionsHTML}
+                    </div>
+                    
+                    <div class="explanation-box" id="exp-${q.id}">
+                        <div class="explanation-title">💡 GIẢI THÍCH CHI TIẾT TỪ MS LÊ HẰNG ENGLISH</div>
+                        
+                        <div class="exp-section">
+                            <div class="exp-section-title">1. Phân tích từ vựng / Các lựa chọn:</div>
+                            <div class="vocab-list">${vocabItemsHTML}</div>
+                        </div>
+
+                        <div class="exp-section">
+                            <div class="exp-section-title">2. Dịch nghĩa toàn câu:</div>
+                            <p style="color:#2D3748; font-weight:700;">${q.translation}</p>
+                        </div>
+
+                        <div class="exp-section">
+                            <div class="exp-section-title">3. Tại sao đáp án đúng lại đúng?</div>
+                            <p style="color:#276749; font-weight:800;">${q.whyCorrect}</p>
+                        </div>
+
+                        <div class="exp-section">
+                            <div class="exp-section-title">4. Tại sao các đáp án còn lại sai?</div>
+                            <p style="color:#C53030; font-weight:800;">${q.whyOthersWrong}</p>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function handleSelect(questionId, selectedIdx, correctIdx) {
+            if (userAnswers[questionId] !== undefined) return;
+
+            userAnswers[questionId] = selectedIdx;
+
+            const card = document.getElementById(`q-card-${questionId}`);
+            const selectedBtn = document.getElementById(`btn-${questionId}-${selectedIdx}`);
+            const correctBtn = document.getElementById(`btn-${questionId}-${correctIdx}`);
+            const expBox = document.getElementById(`exp-${questionId}`);
+
+            const allBtns = card.querySelectorAll('.option-btn');
+            allBtns.forEach(btn => btn.disabled = true);
+
+            if (selectedIdx === correctIdx) {
+                selectedBtn.classList.add('correct');
+                playDingSound();
+                launchConfetti();
+            } else {
+                selectedBtn.classList.add('wrong');
+                correctBtn.classList.add('correct');
+                card.classList.add('shake');
+                playWrongSound();
+            }
+
+            expBox.style.display = 'block';
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            const total = rawQuizData.length;
+
+            rawQuizData.forEach(q => {
+                if (userAnswers[q.id] === q.correctIndex) {
+                    score++;
+                }
+            });
+
+            const percentage = (score / total) * 100;
+            let feedback = "";
+
+            if (percentage < 50) {
+                feedback = "“Điểm lần này chưa cao lắm, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!”";
+            } else if (percentage >= 60 && percentage <= 80) {
+                feedback = "“Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!”";
+            } else {
+                feedback = "“Làm tốt lắm, con cố gắng rinh điểm 10 ở lần sau nha!”";
+            }
+
+            document.getElementById('scoreDisplay').innerText = `${score} / ${total}`;
+            document.getElementById('feedbackDisplay').innerText = feedback;
+            document.getElementById('scoreModal').style.display = 'flex';
+
+            if (percentage >= 80) {
+                launchConfetti();
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('scoreModal').style.display = 'none';
+        }
+
+        window.onload = () => {
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
